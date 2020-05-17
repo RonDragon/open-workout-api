@@ -33,7 +33,7 @@ const corsOptions = {
   },
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
-const { PORT = 3000, NODE_ENV = "test" } = process.env;
+const { PORT = process.env.PORT || 3000, NODE_ENV = "test" } = process.env;
 
 const IN_PROD = NODE_ENV === "production";
 
