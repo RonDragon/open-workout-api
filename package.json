@@ -2,10 +2,10 @@
   "name": "serverapi",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app/server.js",
+  "main": "dist/server.js",
   "scripts": {
     "watch-ts": "tsc -w",
-    "watch-node": "nodemon dist/app/server.js NODE_ENV='dev'",
+    "watch-node": "nodemon dist/server.js NODE_ENV='dev'",
     "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript, Node\" -c \"yello.bold, cyan.bold\" \"npm run watch-ts\" \"npm run watch-node\""
   },
   "nodemonConfig": {
