@@ -59,8 +59,10 @@ class Server {
     this.app.get("/", (req, res) => {
       res.send({ rc: 0, desc: "", user: { name: "yonatan", age: 28 } });
     });
-    const user = require("./api/user.api");
-    this.app.use("/api/user", user);
+
+    const workout = require("./api/workout.api");
+    this.app.use("/api/workout", workout);
+
   }
 
   public start(): void {
