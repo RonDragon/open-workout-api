@@ -1,10 +1,20 @@
-export class Workout {
+export class UserData {
   constructor(
-    public id: string,
-    public workoutType: string,
-    public date: string,
-    public exercises: Exercise[]
+    public trainerToken: string,
+    public workouts: Workout[]
+
   ) {}
+}
+
+export class Workout{
+constructor(
+  public id: string,
+  public workoutType: string,
+  public date: string,
+  public exercises: Exercise[]
+){
+
+}
 }
 export class Exercise {
   constructor(public exerciseName: string ,public wido: Wido[]) {}

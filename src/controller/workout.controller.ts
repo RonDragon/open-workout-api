@@ -1,29 +1,29 @@
 import { Request, Response } from "express";
-import { Workout, Exercise, Wido } from "../model/workout.model";
+import { Workout, Exercise, Wido, UserData } from "../model/workout.model";
 
-export let getWorkout = async (req: Request, res: Response) => {
+export let getUserData = async (req: Request, res: Response) => {
   try {
-    const date = req.query;
+    const token = req.query['token'];
     console.log("==========================");
     console.log("==========================");
-    console.log(date);
+    console.log(token);
     console.log("==========================");
-    if(req.query['date']){
-        res.send({ rc: 0, desc: "", date });
+    if(req.query['token']){
+        res.send({ rc: 0, desc: "", token });
 
     }else{
-    const workout: Workout = new Workout('zx458sadhkkjefr',"hypertropia", "12/12/2020", [
+    const userData: UserData = new UserData('zx458sadhkkjefr',[new Workout( 'fddsfdsgdgd',"hypertropia", "12/12/2020", [
       new Exercise('pullups',
           [new Wido(1, 8), 
         new Wido(2,7)]
-          )]);
-          res.send({ rc: 0, desc: "", workout });
+          )])]);
+          res.send({ rc: 0, desc: "", userData });
         }
   } catch (error) {
     res.status(500).json({ rc: 99, desc: "general error" });
   }
 };
-export let setWorkout = async (req: Request, res: Response) => {
+export let addWorkout = async (req: Request, res: Response) => {
   try {
       const workout : Workout = req.body.workout
       if(workout.workoutType === null){

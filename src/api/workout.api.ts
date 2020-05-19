@@ -1,12 +1,11 @@
 import * as express from "express";
-import { getWorkout, setWorkout, updateWorkout, deleteWorkout } from "../controller/workout.controller";
+import {  addWorkout, updateWorkout, deleteWorkout, getUserData } from "../controller/workout.controller";
 
 
 const router = express.Router();
 
-router.get('/getWorkout',getWorkout);
-router.get('/getWorkout/:date',getWorkout);
-router.post('/setWorkout',setWorkout);
+router.get('/getUserData',getUserData);
+router.post('/addWorkout',addWorkout);
 router.post('/updateWorkout',updateWorkout);
 router.delete('/deleteWorkout',deleteWorkout);
 
