@@ -1,28 +1,23 @@
 import { Request, Response } from "express";
-import { Workout, Exercise, Wido, UserData } from "../model/workout.model";
+import { Workout } from "../model/workout.model";
+import { SocialUser } from "../model/user.model";
 
-export let getUserData = async (req: Request, res: Response) => {
-  try {
-    const token = req.query['token'];
-    console.log("==========================");
-    console.log("==========================");
-    console.log(token);
-    console.log("==========================");
-    if(req.query['token']){
-        res.send({ rc: 0, desc: "", token });
+export let getUserData = async (req: Request, res: Response)=>{
+  try{
+    const user : SocialUser = new SocialUser(
+      req.query['name'].toString(),
+      req.query['email'].toString(),
+      req.query['provider'].toString()
+    )
+    console.log(user.provider);
+    if(user.provider){
+      res.send({ rc: 0, desc: "account linked to " + user.provider + " succesfully!", user });
+    }
+  }catch(error){
 
-    }else{
-    const userData: UserData = new UserData('zx458sadhkkjefr',[new Workout( 'fddsfdsgdgd',"hypertropia", "12/12/2020", [
-      new Exercise('pullups',
-          [new Wido(1, 8), 
-        new Wido(2,7)]
-          )])]);
-          res.send({ rc: 0, desc: "", userData });
-        }
-  } catch (error) {
-    res.status(500).json({ rc: 99, desc: "general error" });
   }
-};
+}
+
 export let addWorkout = async (req: Request, res: Response) => {
   try {
       const workout : Workout = req.body.workout

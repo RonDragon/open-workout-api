@@ -6,7 +6,7 @@ import * as cookieParser from "cookie-parser";
 const bodyParser = require("body-parser");
 const allowedOrigins = {
   dev: ["http://localhost:4200"],
-  prod: [""],
+  prod: ["https://open-workout-web.netlify.app"],
 };
 function getOrigin(origin: string): boolean {
   console.log("NODE_ENV", NODE_ENV);
