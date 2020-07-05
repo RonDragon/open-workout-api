@@ -14,9 +14,9 @@ export class Workout {
   ) {}
 }
 export class Exercise {
-  constructor(public exerciseName: string, public wido: Wido[]) {}
+  constructor(public exerciseNum: number,public exerciseName: string, public sets: Set[]) {}
 }
 
-export class Wido {
-  constructor(public setNum: number, public rep: number) {}
+export class Set {
+  constructor(public setNum: number, public reps: number,public kg: number) {}
 }

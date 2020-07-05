@@ -1,3 +1,4 @@
+import { Exercise, Set } from './../model/workout.model';
 import { Request, Response } from "express";
 import { Workout } from "../model/workout.model";
 import { SocialUser } from "../model/user.model";
@@ -9,9 +10,23 @@ export let getUserData = async (req: Request, res: Response)=>{
       req.query['email'].toString(),
       req.query['provider'].toString()
     )
+    const workouts: Workout = new Workout('4265',
+                                         'hypertropia',
+                                         new Date().toDateString(),
+                                         [new Exercise(1,'pull ups',
+                                         [new Set(1,10,0),
+                                          new Set(2,9,0),
+                                          new Set(3,8,0)],
+                                          ),
+                                          new Exercise(2,'push ups',
+                                          [new Set(1,15,0),
+                                           new Set(2,9,0),
+                                           new Set(3,5,0)],
+                                           )]
+                                          )
     console.log(user.provider);
     if(user.provider){
-      res.send({ rc: 0, desc: "account linked to " + user.provider + " succesfully!", user });
+      res.send({ rc: 0, desc: "account linked to " + user.provider + " succesfully!", user,workouts });
     }
   }catch(error){
 
